@@ -28,7 +28,7 @@ factory Task.fromJson(Map<String, dynamic> json) => Task(
   task_name: json['task_name'],
   task_where: json['task_where'],
   task_person: json['task_person'],
-  task_status: json['task_state'],
+  task_status: json['task_status'],
   task_duedate: json['task_duedate'],
   task_image_url: json['task_image_url'],
 );

@@ -15,7 +15,7 @@ class SupabaseService {
   //เมธอดดึงข้อมูลงานทั้งหมด จากตาราง tasks_tb เพื่อไปใช้กับหน้า ShowAllTaskUi
   Future<List<Task>> getAllTasks() async {
     //ดึงข้อมูล
-    final data = await supabase.from('tasks_tb').select('*');
+    final data = await supabase.from('task_tb').select('*');
 
     //ส่งค่าข้อมูลที่ดึงกลับไปใช้งานอย่างที่ต้องการ
     return data.map((e) => Task.fromJson(e)).toList();
@@ -36,7 +36,7 @@ class SupabaseService {
 
   //เมธอด เพิ่ม ข้อมูลลงตาราง tasks_tb เพื่อใช้กับหน้า AddTaskUi
   Future<void> insertTask(Task task) async {
-    await supabase.from('tasks_tb').insert(task.toJson());
+    await supabase.from('task_tb').insert(task.toJson());
   }
 
   //เมธอด ลบ ไฟล์รูปภาพใน task_bk เพื่อใช้กับหน้า UpdateDeleteTaskUi
@@ -50,11 +50,11 @@ class SupabaseService {
 
   //เมธอด แก้ไข  ข้อมูลในตาราง tasks_tb เพื่อใช้กับหน้า UpdateDeleteTaskUi
   Future<void> updateTask(String id, Task task) async {
-    await supabase.from('tasks_tb').update(task.toJson()).eq('id', id);
+    await supabase.from('task_tb').update(task.toJson()).eq('id', id);
   }
 
   //เมธอด ลบ  ข้อมูลในตาราง tasks_tb เพื่อใช้กับหน้า UpdateDeleteTaskUi
   Future<void> deleteTask(String id) async {
-    await supabase.from('tasks_tb').delete().eq('id', id);
+    await supabase.from('task_tb').delete().eq('id', id);
   }
 }
